@@ -20,12 +20,12 @@
   belongs_to :user
 
 ## tagsテーブル
-|Column|Type|Options|d
+|Column|Type|Options|
 |------|----|-------|
 |text|text|null: false|
 ### Association
  has_many :posts_tags
-
+ belongs_to :user
 
 ## posts_tagsテーブル
 |Column|Type|Options|
