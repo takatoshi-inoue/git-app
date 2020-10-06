@@ -1,4 +1,5 @@
 # chatspaceのDV設計
+# テーブルの追加
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
