@@ -1,39 +1,36 @@
-# chatspace
+# chatspaceのDV設計
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
+|nickname|string|null: false|
 |email|string|null: false|
 |password|string|null: false|
-|nickname|string|null: false|
 ### Association
-  has_many :comments
-  has_many :posts
+  has_many :coments
+  has_many :groups through: :users_groups
 
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |text|text| |
 |image|text|null: false|
-|tweet_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
   belongs_to :user
 
-## tagsテーブル
+## users_groups中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
+|users_id|integer|null: false, foreign_key: true|
+|groups_id|integer|null: false, foreign_key: true|
 ### Association
- has_many :posts_tags
- belongs_to :user
+ belong_to :user
+ belong_to :group
 
-## posts_tagsテーブル
+## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|text|text|null: false|
-|post_id|integer|null: false, foreign_key: true|
+|nickname|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
-belongs_to :post
-belongs_to :tag
-
+  has_many :users through: :users_groups
